@@ -1,17 +1,5 @@
-## 
+# Internet of Things Attack (IoTA) Methodology
 
-  -------------------------------------------------------- --------------
-  Internet of Things Attack (IoTA) Methodology             
-
-                                                           
-
-                                                           August 18,
-                                                           2022
-
-                                                           
-  -------------------------------------------------------- --------------
-
-## 
 
 # Introduction
 
@@ -21,7 +9,7 @@ This document describes the Internet of Things Assessment (IoTA) Red
 Team approach to security testing of different IoT devices and
 architectures. The definition of IoT varies depending on the
 organization providing the definition. This document will proceed on the
-basis of the definitions in NIST Special Publication SP800-183 \[13\].
+basis of the definitions in NIST Special Publication SP800-183.
 That document is written around the concept of NoTs (Networks of Things)
 and treats IoTs as "an instantiation of a NoT, more specifically, IoT
 has its 'things' tethered to the Internet." A NoT is usually composed of
@@ -1240,17 +1228,37 @@ devices outside of the scope of the test. A properly isolated lab
 environment equipped with faraday cages and RF shielding should be used
 to avoid potential conflicts.
 
-### Reverse Engineering of Pproprietary RF 
+### Reverse Engineering of Proprietary RF
 
--   Frequency
+Reverse engineering proprietary RF protocols involves a systematic approach to decipher the communication parameters and structure of the transmitted data. This process typically includes analyzing the frequency, modulation, encoding schemes, and packet breakdown.
 
--   Modulation
+####Frequency
 
--   Encoding
+Identifying the operating frequency is the first step in reverse engineering RF communications. This involves using a spectrum analyzer to detect the frequency bands utilized by the target device. Common frequency bands include industrial, scientific, and medical (ISM) bands such as 433 MHz, 868 MHz, and 2.4 GHz. Accurate frequency identification is crucial for tuning receivers and further analysis.
 
--   Packet breakdown (sync word, headers, data)
+###Modulation
 
-Upcoming aditions
+Modulation defines how data is represented over RF signals. Common modulation schemes include Amplitude Shift Keying (ASK), Frequency Shift Keying (FSK), and Phase Shift Keying (PSK). Determining the modulation type can be achieved by analyzing the signal's waveform using an oscilloscope or software-defined radio (SDR) tools. Understanding the modulation scheme is essential for demodulating the signal into a baseband data stream.
+
+###Encoding
+
+Encoding refers to how binary data is formatted for transmission. Protocols may use encoding schemes such as Non-Return to Zero (NRZ), Manchester encoding, or others. Identifying the encoding method requires examining the demodulated data stream to interpret the bit patterns correctly. This step is vital for accurately reconstructing the transmitted data.
+
+###Packet Breakdown
+
+RF communications are typically structured into packets comprising several components:
+
+Sync Word: A predefined sequence that indicates the start of a packet, allowing receivers to synchronize with the incoming data stream.
+
+Headers: Contain metadata such as address information, packet type, and length, which are essential for proper data interpretation and routing.
+
+Data Payload: The actual user data transmitted.
+
+Analyzing the packet structure involves capturing multiple packets and identifying consistent patterns corresponding to these components. Tools like SDRs combined with protocol analysis software such as RTL_433 and Universal Radio Hacker (URH) can facilitate this process. 
+
+
+
+Upcoming additions
 
 -   Web app testing (if applicable) Local device and "cloud" management
     services
