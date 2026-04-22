@@ -470,8 +470,8 @@ the utility or the vendor.
 Public documentation and marketing material provide a wealth of
 information pertinent to attack. New features in a product revision
 announcement often indicate code that is newer and less thoroughly
-reviewed for vulnerabilities. The team\'s understanding of an IoT
-component\'s features and intended behavior will provide insight into
+reviewed for vulnerabilities. The team's understanding of an IoT
+component's features and intended behavior will provide insight into
 security weaknesses as well as context for binary code analysis.
 
 Sources of public information pertinent to analysis include, but are not
@@ -672,16 +672,11 @@ outside of its intended purpose
 
 Tamper-protection mechanisms which should be evaluated include:
 
--   Remote tamper detection systems, where an IoT device can remotely
-    > notify the manufacturer office that someone is tampering with a
-    > device;
+-   Remote tamper detection systems, where an IoT device can remotely notify the manufacturer office that someone is tampering with a device;
 
--   System integrity protection systems, where an IoT device can protect
-    > the integrity of a system, including self-erasure of keys and
-    > firmware;
+-   System integrity protection systems, where an IoT device can protect the integrity of a system, including self-erasure of keys and firmware;
 
--   Intended repair modes, used for authorized repair personnel from the
-    > manufacturer, company or vendor;
+-   Intended repair modes, used for authorized repair personnel from the manufacturer, company or vendor;
 
 -   Security of physical locks.
 
@@ -982,13 +977,13 @@ involvement.
 ### Insecure internal and external buses
 
 Embedded systems commonly use peripheral devices such as radios or
-EEPROM chips, interfacing with microcontrollers through SPI, I^2^C or
+EEPROM chips, interfacing with microcontrollers through SPI, I2C or
 other types of serial bus interfaces. Although this is a convenient and
 industry standard method for interfacing peripheral devices with each
 other, it represents a security risk for a device with little or no
 physical protection. For example, the use of two electrical probes
 constructed from medical syringes connected to a protocol adapter to
-extract the firmware from an EEPROM device over an I^2^C bus. The
+extract the firmware from an EEPROM device over an I2C bus. The
 extracted EEPROM data could contain executable code, configuration
 information or cryptographic keys, each of which could be stolen or
 modified.
@@ -1014,7 +1009,7 @@ this interface, an attacker is able to observe all communications
 between the two peripherals, capturing radio configuration information,
 cryptographic keys, network authentication credentials and other
 sensitive data. This collected data can then be used on third-party
-devices to extend the attacker\'s access into the target network.
+devices to extend the attacker's access into the target network.
 
 Alternatively, an attacker could manipulate the target network by
 injecting new packets onto the bus. This provides them with a reliable
@@ -1114,17 +1109,17 @@ Section. The team will review the use of such devices, manipulating
 them by a variety of methods to extract interesting data.
 
 The simplest of these attacks to perform, involves the use of two
-electric probes and a shared ground to dump an I^2^C EEPROM\'s
-contents. The multi-master features of I^2^C allow this to be
+electric probes and a shared ground to dump an I2C EEPROM's
+contents. The multi-master features of I2C allow this to be
 performed while the device is still active. The two probes, modified
 hypodermic syringes, are tapping the Serial Data (SDA) and Serial
 Clock (SCL) lines.
 
 SPI is more difficult to tap, yet not insurmountable. Because it lacks
-the multi-master mode of I^2^C, any attempt to read or write the
+the multi-master mode of I2C, any attempt to read or write the
 memory chip will result in interference from the master
 microcontroller. Three methods exist by which the memory chip may be
-accessed without the microcontroller\'s interference.
+accessed without the microcontroller's interference.
 
 First, the EEPROM may be desoldered by use of the SMD rework station
 described in Section. Once removed, it can be soldered to a fresh
@@ -1692,19 +1687,19 @@ to avoid potential conflicts.
 
 Reverse engineering proprietary RF protocols involves a systematic approach to decipher the communication parameters and structure of the transmitted data. This process typically includes analyzing the frequency, modulation, encoding schemes, and packet breakdown.
 
-####Frequency
+#### Frequency
 
 Identifying the operating frequency is the first step in reverse engineering RF communications. This involves using a spectrum analyzer to detect the frequency bands utilized by the target device. Common frequency bands include industrial, scientific, and medical (ISM) bands such as 433 MHz, 868 MHz, and 2.4 GHz. Accurate frequency identification is crucial for tuning receivers and further analysis.
 
-###Modulation
+### Modulation
 
 Modulation defines how data is represented over RF signals. Common modulation schemes include Amplitude Shift Keying (ASK), Frequency Shift Keying (FSK), and Phase Shift Keying (PSK). Determining the modulation type can be achieved by analyzing the signal's waveform using an oscilloscope or software-defined radio (SDR) tools. Understanding the modulation scheme is essential for demodulating the signal into a baseband data stream.
 
-###Encoding
+### Encoding
 
 Encoding refers to how binary data is formatted for transmission. Protocols may use encoding schemes such as Non-Return to Zero (NRZ), Manchester encoding, or others. Identifying the encoding method requires examining the demodulated data stream to interpret the bit patterns correctly. This step is vital for accurately reconstructing the transmitted data.
 
-###Packet Breakdown
+### Packet Breakdown
 
 RF communications are typically structured into packets comprising several components:
 
